@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import base64
 import json
@@ -11,15 +12,17 @@ def one(x):
             res=base64.b64encode(st)
             print(res.decode())
         except:
-            print("wrong input")
-    else:
+            print("Wrong Input")
+    elif x==1:
         ip=input("Pleae input the context you would like to decode:")
         try:
             st=ip.encode()
             res=base64.b64decode(st)
             print(res.decode())
         except:
-            print("wrong input")
+            print("Wrong Input")
+    else:
+       print("Wrong Input")
             
 def two():   
  try:
@@ -52,8 +55,12 @@ def two():
 def three():
     
    ip=input('Please input the name of your file:')
-   op=open("{}.txt".format(ip))
-   data=op.read()
+   try:
+     op=open(ip,encoding="utf-8")
+     data=op.read()
+   except:
+     op=open(ip,encoding="gbk")
+     data=op.read()  
    img_file = r'qrcode.jpg'
 
    img = qrcode.make(data)
@@ -69,11 +76,8 @@ if num=="1":
     one(num0)
 elif num=="2":
     two()
-else:
+elif num=="3":
     three()
-    
-
-
-   
-
+else:
+   print("wrong input") 
 
